@@ -9,7 +9,7 @@ public class PersonServiceImpl implements PersonService {
 
     private List<Person> personList = new ArrayList<Person>();
 
-    private static int id = 1;
+    private int id = 1;
 
     public PersonServiceImpl() {
         personList.add

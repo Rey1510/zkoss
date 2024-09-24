@@ -57,8 +57,8 @@ public class SearchController extends SelectorComposer<Component> {
     public void showDetail(){
         Set<Person> selection = dataUsername.getSelection();
         Person selected = selection.iterator().next();
-        birthdayLabel.setValue(selected.getBirthday());
-        ageLabel.setValue(String.valueOf(selected.getAge()));
-        addressLabel.setValue(selected.getJabodetabek());
+        birthdayLabel.setValue("Birthday: " + selected.getBirthday());
+        ageLabel.setValue("Age: " + String.valueOf(selected.getAge()));
+        addressLabel.setValue("Address: " + selected.getJabodetabek());
     }
 }

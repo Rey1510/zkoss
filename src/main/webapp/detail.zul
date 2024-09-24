@@ -98,15 +98,12 @@
                 </listbox>
 
                 <div>
-                    <label value="Birthday: "/>
                     <label id="birthdayLabel"/>
                 </div>
                 <div>
-                    <label value="Age: "/>
                     <label id="ageLabel"/>
                 </div>
                 <div>
-                    <label value="Address: "/>
                     <label id="addressLabel"/>
                 </div>
 
