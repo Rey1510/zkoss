@@ -52,49 +52,6 @@
                             <listcell label="${each.jabodetabek}" />
                         </listitem>
                     </template>
-<!--                    <listitem>-->
-<!--                        <listcell label="John" />-->
-<!--                        <listcell label="john.doe@example.com" />-->
-<!--                        <listcell label="Male" />-->
-<!--                        <listcell label="1995-05-15" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="Alice" />-->
-<!--                        <listcell label="alice123@example.com" />-->
-<!--                        <listcell label="Female" />-->
-<!--                        <listcell label="2000-08-25" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="Bob" />-->
-<!--                        <listcell label="bob.smith@example.com" />-->
-<!--                        <listcell label="Male" />-->
-<!--                        <listcell label="1992-03-10" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="Emma" />-->
-<!--                        <listcell label="emma.watson@example.com" />-->
-<!--                        <listcell label="Female" />-->
-<!--                        <listcell label="1988-12-30" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="Michael" />-->
-<!--                        <listcell label="michael.brown@example.com" />-->
-<!--                        <listcell label="Male" />-->
-<!--                        <listcell label="1990-07-22" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="Sophia" />-->
-<!--                        <listcell label="sophia.james@example.com" />-->
-<!--                        <listcell label="Female" />-->
-<!--                        <listcell label="1997-11-05" />-->
-<!--                    </listitem>-->
-<!--                    <listitem>-->
-<!--                        <listcell label="David" />-->
-<!--                        <listcell label="david.johnson@example.com" />-->
-<!--                        <listcell label="Male" />-->
-<!--                        <listcell label="1993-02-17" />-->
-<!--                    </listitem>-->
-
                 </listbox>
 
                 <div>

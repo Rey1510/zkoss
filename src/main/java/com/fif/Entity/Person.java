@@ -1,16 +1,18 @@
 package com.fif.Entity;
 
+import java.util.Date;
+
 public class Person {
     private int id;
     private String username;
     private String email;
     private String password;
     private String gender;
-    private String birthday;
+    private Date birthday;
     private int age;
     private String jabodetabek;
 
-    public Person(int id, String username, String email, String password, String gender, String birthday, int age, String jabodetabek) {
+    public Person(int id, String username, String email, String password, String gender, Date birthday, int age, String jabodetabek) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -61,11 +63,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
