@@ -1,0 +1,17 @@
+<zk>
+    <window title="Privacy Policy" border="normal" width="400px" closable="true" style="padding: 20px;">
+        <vlayout>
+            <label value="Privacy Policy" style="font-weight: bold; font-size: 20px; margin-bottom: 10px;" />
+            <label multiline="true" value="Your privacy is important to us. This privacy policy explains how we collect, use, and share your information.\n\n"
+                   style="margin-bottom: 5px;" />
+            <label value="1. **Information Collection**: We collect personal information that you provide directly, such as your name, email address, and any other details you choose to provide.\n\n"
+                   multiline="true" />
+            <label value="2. **Use of Information**: We use your information to improve our services, communicate with you, and provide customer support.\n\n"
+                   multiline="true" />
+            <label value="3. **Data Sharing**: We do not sell or share your personal information with third parties without your consent, except as required by law."
+                   multiline="true" />
+            <label value="By using our application, you consent to our privacy policy." />
+            <button label="Close" onClick='Executions.sendRedirect("/registration.zul")' style="margin-top: 20px;" />
+        </vlayout>
+    </window>
+</zk>

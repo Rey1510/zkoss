@@ -1,0 +1,121 @@
+<zk xmlns:Username="http://www.w3.org/1999/xhtml">
+    <borderlayout width="100%" height="100%">
+
+        <north size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
+            <label value="User Details Table" style="font-size: 20px; font-weight: bold; color: #00796B;" />
+        </north>
+
+        <west size="150px" flex="true" maxsize="200" splittable="true" collapsible="true" style="background-color: #E0E0E0; padding: 10px;">
+            <vlayout spacing="10px">
+                <menubar>
+                    <menu label="Navigate" style="border: none">
+                        <menupopup>
+                            <menuitem label="Form" onClick='Executions.sendRedirect("/registration.zul")' />
+                            <menuitem label="Table" onClick='Executions.sendRedirect("/detail.zul")' />
+                            <menuitem label="Terms and Policy" onClick='Executions.sendRedirect("/termofuse.zul")' />
+                            <menuitem label="Help" onClick='Executions.sendRedirect("/help.zul")' />
+                        </menupopup>
+                    </menu>
+                </menubar>
+
+                <div style="height: 580px;"></div>
+
+                <button label="Back" onClick='Executions.sendRedirect("/registration.zul")' style="background-color: #00796B; color: white;" />
+            </vlayout>
+        </west>
+
+
+        <!-- Main Content: Listbox -->
+        <center>
+            <window id="detailWindow" title="User Details" border="normal" width="100%" apply="com.fif.Controller.SearchController">
+                <textbox id="keywordBox"/>
+                <button id="searchButton" label="Search"/>
+                <listbox id="personList" width="100%" height="300px">
+                    <listhead sizable="true">
+                        <listheader label="id" sort="auto" width="5%" />
+                        <listheader label="Username" sort="auto" width="20%" />
+                        <listheader label="Email" sort="auto" width="25%" />
+                        <listheader label="Gender" sort="auto" width="15%" />
+                        <listheader label="Birthday" sort="auto" width="15%" />
+                        <listheader label="Age" sort="auto" width="10%" />
+                        <listheader label="Jabodetabek" sort="auto" width="10%" />
+                    </listhead>
+
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each.id}" />
+                            <listcell label="${each.username}" />
+                            <listcell label="${each.email}" />
+                            <listcell label="${each.gender}" />
+                            <listcell label="${each.birthday}" />
+                            <listcell label="${each.age}" />
+                            <listcell label="${each.jabodetabek}" />
+                        </listitem>
+                    </template>
+<!--                    <listitem>-->
+<!--                        <listcell label="John" />-->
+<!--                        <listcell label="john.doe@example.com" />-->
+<!--                        <listcell label="Male" />-->
+<!--                        <listcell label="1995-05-15" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="Alice" />-->
+<!--                        <listcell label="alice123@example.com" />-->
+<!--                        <listcell label="Female" />-->
+<!--                        <listcell label="2000-08-25" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="Bob" />-->
+<!--                        <listcell label="bob.smith@example.com" />-->
+<!--                        <listcell label="Male" />-->
+<!--                        <listcell label="1992-03-10" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="Emma" />-->
+<!--                        <listcell label="emma.watson@example.com" />-->
+<!--                        <listcell label="Female" />-->
+<!--                        <listcell label="1988-12-30" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="Michael" />-->
+<!--                        <listcell label="michael.brown@example.com" />-->
+<!--                        <listcell label="Male" />-->
+<!--                        <listcell label="1990-07-22" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="Sophia" />-->
+<!--                        <listcell label="sophia.james@example.com" />-->
+<!--                        <listcell label="Female" />-->
+<!--                        <listcell label="1997-11-05" />-->
+<!--                    </listitem>-->
+<!--                    <listitem>-->
+<!--                        <listcell label="David" />-->
+<!--                        <listcell label="david.johnson@example.com" />-->
+<!--                        <listcell label="Male" />-->
+<!--                        <listcell label="1993-02-17" />-->
+<!--                    </listitem>-->
+
+                </listbox>
+
+                <div>
+                    <label value="Birthday: "/>
+                    <label id="birthdayLabel"/>
+                </div>
+                <div>
+                    <label value="Age: "/>
+                    <label id="ageLabel"/>
+                </div>
+                <div>
+                    <label value="Address: "/>
+                    <label id="addressLabel"/>
+                </div>
+
+            </window>
+        </center>
+
+        <!-- Footer Section with Light Background and Centered Text -->
+        <south size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
+            <label value="Footer Gatau isi Apa" style="font-size: 16px; font-weight: bold; color: #00796B;" />
+        </south>
+    </borderlayout>
+</zk>

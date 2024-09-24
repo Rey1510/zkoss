@@ -1,0 +1,17 @@
+<zk>
+    <window title="Terms of Use" border="normal" width="400px" closable="true" style="padding: 20px;">
+        <vlayout>
+            <label value="Terms of Use" style="font-weight: bold; font-size: 20px; margin-bottom: 10px;" />
+            <label multiline="true" value="Welcome to our application! By using our services, you agree to the following terms:\n\n"
+                   style="margin-bottom: 5px;" />
+            <label value="1. **Acceptance of Terms**: By accessing or using our application, you agree to comply with these terms.\n\n"
+                   multiline="true" />
+            <label value="2. **User Responsibilities**: You are responsible for maintaining the confidentiality of your account and password, and for all activities that occur under your account.\n\n"
+                   multiline="true" />
+            <label value="3. **Modifications to Terms**: We reserve the right to modify these terms at any time. Your continued use of the application constitutes acceptance of those changes."
+                   multiline="true" />
+            <label value="If you do not agree with these terms, please do not use our application." />
+            <button label="Close" onClick='Executions.sendRedirect("/registration.zul")' style="margin-top: 20px;" />
+        </vlayout>
+    </window>
+</zk>

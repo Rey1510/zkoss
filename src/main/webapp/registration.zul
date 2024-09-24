@@ -1,0 +1,247 @@
+<!--<?init class="org.zkoss.zk.ui.util.Composition" arg0="/common/layout/template.zul"?>-->
+
+<zk xmlns:Username="http://www.w3.org/1999/xhtml">
+
+    <style>
+        body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+        }
+
+        .form-window {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        }
+
+        .male-icon {
+        color: blue !important;
+        }
+
+        .female-icon {
+        color: pink !important;
+        }
+
+        .label {
+        font-weight: bold;
+        margin-right: 10px;
+        }
+
+        .submit-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+        background-color: #218838;
+        }
+
+        .reset-btn {
+        background-color: #ffc107;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background-color 0.3s;
+        }
+
+        .reset-btn:hover {
+        background-color: #e0a800;
+        }
+
+        .terms-label {
+        cursor: pointer;
+        }
+
+        .popup {
+        padding: 10px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+    <zscript><![CDATA[
+         public void resetForm() {
+            Textbox username = (Textbox) self.getFellow("username");
+            Textbox email = (Textbox) self.getFellow("email");
+            Textbox password = (Textbox) self.getFellow("password");
+            Textbox reenterPassword = (Textbox) self.getFellow("reenterPassword");
+            Datebox birthday = (Datebox) self.getFellow("birthday");
+            Combobox combobox = (Combobox) self.getFellow("combobox");
+            Checkbox terms = (Checkbox) self.getFellow("terms");
+            Spinner age = (Spinner) self.getFellow("age");
+            Button submitButton = (Button) self.getFellow("submitButton");
+
+            username.setConstraint(null);
+            email.setConstraint(null);
+            password.setConstraint(null);
+            reenterPassword.setConstraint(null);
+            birthday.setConstraint(null);
+            combobox.setConstraint(null);
+            username.setValue("");
+            email.setValue("");
+            // Reset gender selection to default
+            Radiogroup gender = (Radiogroup) self.getFellow("gender");
+            gender.setSelectedItem(gender.getItemAtIndex(0)); // Select the first radio button (male)
+            birthday.setValue(null);
+            password.setValue(null);
+            reenterPassword.setValue(null);
+            age.setValue(0);
+            combobox.setValue(null);
+            terms.setChecked(false);
+            terms.setDisabled(true);
+            submitButton.setDisabled(true);
+            submitButton.setIconSclass("");
+        }
+
+        public void checkFields() {
+        String usernameValue = self.getFellow("username").getValue();
+        String emailValue = self.getFellow("email").getValue();
+        boolean isGenderNull = self.getFellow("gender").getSelectedItem() == null;
+        boolean isBirthdayNull = self.getFellow("birthday").getValue() == null;
+
+        Checkbox termsCheckbox = (Checkbox) self.getFellow("terms");
+
+        if (!usernameValue.isEmpty() && !emailValue.isEmpty() && !isBirthdayNull && !isGenderNull) {
+            termsCheckbox.setDisabled(false);
+        } else {
+            termsCheckbox.setDisabled(true);
+            termsCheckbox.setChecked(false);
+        }
+        changeSubmitStatus();
+    }
+
+    public void changeSubmitStatus() {
+        Checkbox termsCheckbox = (Checkbox) self.getFellow("terms");
+        boolean isChecked = termsCheckbox.isChecked();
+
+        if (isChecked && !self.getFellow("username").getValue().isEmpty() && !self.getFellow("email").getValue().isEmpty()) {
+            self.getFellow("submitButton").setDisabled(false);
+            self.getFellow("submitButton").setIconSclass("z-icon-check");
+        } else {
+            self.getFellow("submitButton").setDisabled(true);
+            self.getFellow("submitButton").setIconSclass("");
+        }
+    }
+
+    ]]></zscript>
+
+    <borderlayout height="100%" width="100%">
+        <west title="Welcome" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
+            <div style="background: #4A8C2A; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                <label value="Welcome to My Paradise!" style="color: white; font-size: 24px; font-weight: bold; display: block; margin-bottom: 15px;" />
+                <label value="Please fill out the form to get started." style="color: #E0E0E0; display: block; margin-bottom: 25px;" />
+
+                <label value="Tips for Filling Out the Form:" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />
+
+                <vlayout style="color: #E0E0E0; margin-left: 15px; margin-bottom: 20px;">
+                    <label value="• Ensure your email is valid." />
+                    <label value="• Choose a strong password." />
+                    <label value="• Provide accurate information." />
+                </vlayout>
+
+                <label value="Need Help?" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />
+                <label value="Contact us at: tolongaku@hotmail.com" style="color: #E0E0E0; display: block; margin-bottom: 25px;" />
+
+                <label value="By registering, you agree to our " style="color: #E0E0E0;" />
+                <a href="termofuse.zul" style="color: #FFD700; text-decoration: underline;">Terms of Use</a>
+                <label value=" and " style="color: #E0E0E0;" />
+                <a href="privacy.zul" style="color: #FFD700; text-decoration: underline;">Privacy Policy</a>
+            </div>
+        </west>
+
+
+
+
+        <center border="none">
+            <window title="Welcome! New User" border="normal" width="500px"
+                    style="margin-left: 30vh; margin-right: 30vh; margin-top:10vh;" hflex="min" vflex="min" class="form-window">
+                <grid hflex="min" vflex="min">
+                    <auxhead>
+                        <auxheader label="Registration Form" colspan="2" />
+                    </auxhead>
+                    <columns>
+                        <column />
+                        <column />
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Username:" class="label" />
+                            <textbox id="username" constraint="no empty" onChange="checkFields()" />
+                        </row>
+                        <row>
+                            <label value="Email:" class="label" />
+                            <textbox id="email" constraint="no empty" onChange="checkFields()" />
+                        </row>
+                        <row>
+                            <label value="Password:" class="label" />
+                            <textbox id="password" type="password" constraint="no empty" onChange="checkFields()" />
+
+                        </row>
+                        <row>
+                            <label value="Re-enter Password:" class="label" />
+                            <textbox id="reenterPassword" type="password" constraint="no empty" onChange="checkFields()" />
+
+                        </row>
+                        <row>
+                            <label value="Gender:" class="label" />
+                            <radiogroup id="gender">
+                                <radio id="male" label="Male" value="Male" selected="true" iconSclass="z-icon-male male-icon" />
+                                <radio id="female" label="Female" value="Female" iconSclass="z-icon-female female-icon" />
+                            </radiogroup>
+                        </row>
+                        <row>
+                            <label value="Birthday" class="label" />
+                            <datebox id="birthday" lenient="false" buttonVisible="true"
+                                     constraint="no empty, no today, no future" onChange="checkFields()" />
+                        </row>
+                        <row>
+                            <label value="Age:" class="label" />
+                            <spinner id="age" width="100px" value="18" constraint="no empty,min 0" />
+                        </row>
+                        <row>
+                            <label value="Jabodetabek?" class="label" />
+                            <combobox constraint="no empty" id="combobox">
+                                <comboitem label="Jakarta" />
+                                <comboitem label="Bogor" />
+                                <comboitem label="Depok" />
+                                <comboitem label="Tangerang" />
+                                <comboitem label="Bekasi" />
+                            </combobox>
+                        </row>
+                        <row align="center" spans="2">
+                            <hlayout>
+                                <checkbox id="terms" onCheck="changeSubmitStatus()" disabled="true" />
+                                <label value="Accept Term of Use (Click for Detail)" popup="termDetail, position=end_after" class="terms-label" />
+                            </hlayout>
+                        </row>
+                        <row spans="2" align="right">
+                            <hlayout>
+                                <label value="Help (Ctrl+H)" style="cursor: pointer" onClick='Executions.sendRedirect("/help.zul")'/>
+                                <button label="Reset" onClick="resetForm()" class="reset-btn" />
+                                <button id="submitButton" label="Submit" href="/detail.zul" disabled="true" class="submit-btn" />
+                            </hlayout>
+                        </row>
+                    </rows>
+                </grid>
+
+                <popup id="termDetail" class="popup">
+                    <include src="termofuse.zul" />
+                </popup>
+
+                <popup id="helpPopup" class="popup">
+                    <include src="help.zul" />
+                </popup>
+            </window>
+        </center>
+    </borderlayout>
+</zk>

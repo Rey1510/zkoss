@@ -1,0 +1,45 @@
+<zk>
+    <grid id="grid" width="500px">
+        <columns id="h" sizable="true">
+            <column id="col1" label="Type"/>
+            <column id="col2" label="Content"/>
+        </columns>
+        <rows id="rows">
+            <!-- Simulate Group Header -->
+            <row>
+                <label style="font-weight: bold;" value="Group 1: (gp1)" />
+            </row>
+            <row>
+                <label value="File:"/>
+                <label value="File:"/>
+            </row>
+            <row id="row1">
+                <label value="Type:"/>
+                <hbox>
+                    <listbox rows="1" mold="select">
+                        <listitem label="Java Files,(*.java)"/>
+                        <listitem label="All Files,(*.*)"/>
+                    </listbox>
+                    <button label="Browse..."/>
+                </hbox>
+            </row>
+            <!-- Simulate Group Footer -->
+            <row>
+                <label style="font-style: italic;" value="2 Java Files, 10 Files"/>
+            </row>
+
+            <!-- Simulate Group Header for Group 2 -->
+            <row>
+                <label style="font-weight: bold;" value="Group 2: (gp2)" />
+            </row>
+            <row>
+                <label value="Options:"/>
+                <label value="Options:"/>
+            </row>
+            <!-- Simulate Group Footer for Group 2 -->
+            <row>
+                <label style="font-style: italic;" value="2 Options, 10 Options"/>
+            </row>
+        </rows>
+    </grid>
+</zk>

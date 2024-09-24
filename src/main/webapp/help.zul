@@ -1,0 +1,51 @@
+<zk xmlns:w="http://www.w3.org/1999/xhtml">
+    <borderlayout width="100%" height="100%">
+
+        <north size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
+            <label value="Support Center" style="font-size: 20px; font-weight: bold; color: #00796B;" />
+        </north>
+
+        <center>
+            <window id="supportWindow" title="Support Request" border="normal" width="80%" height="auto">
+                <vlayout spacing="15px" style="padding: 20px;">
+                    <label value="Need Help? Fill out the form below:" style="font-size: 16px;" />
+
+                    <textbox id="nameField" placeholder="Your Name" width="100%" />
+                    <textbox id="emailField" placeholder="Your Email" width="100%" />
+                    <textbox id="subjectField" placeholder="Subject" width="100%" />
+                    <textbox id="messageField" multiline="true" rows="5" placeholder="Your Message" width="100%" />
+
+                    <button label="Submit" onClick="submitSupportRequest()" style="background-color: #00796B; color: white;" />
+                </vlayout>
+
+                <separator style="margin: 20px 0;" />
+
+                <label value="Frequently Asked Questions" style="font-size: 18px; font-weight: bold;" />
+
+                <vlayout>
+                    <label value="Q: How can I reset my password?" />
+                    <label value="A: You can reset your password by clicking on 'Forgot Password' on the login page." />
+
+                    <label value="Q: How can I contact support?" />
+                    <label value="A: You can contact support through this form or by emailing support@example.com." />
+
+                    <label value="Q: What is the response time for support requests?" />
+                    <label value="A: Our team typically responds within 24-48 hours." />
+                </vlayout>
+            </window>
+        </center>
+
+        <south size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
+            <label value="Footer Gatau isi Apa" style="font-size: 16px; font-weight: bold; color: #00796B;" />
+        </south>
+    </borderlayout>
+
+    <zscript>
+        <![CDATA[
+            void submitSupportRequest() {
+                Thread.sleep(3000); // Delay for 3 seconds
+                Executions.sendRedirect("/registration.zul");
+            }
+        ]]>
+    </zscript>
+</zk>
