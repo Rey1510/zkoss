@@ -1,5 +1,6 @@
 D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\Entity\Person.java
 D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\MyViewModel.java
-D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\Controller\SearchController.java
+D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\Repository\PersonRepository.java
 D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\services\PersonServiceImpl.java
 D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\services\PersonService.java
+D:\FIFGROUP IT DEV\Materi Bootcamp\ZKoss (Mas Adit)\Day 1\zk-day1\src\main\java\com\fif\Controller\SearchViewModel.java

@@ -44,4 +44,7 @@ public class PersonRepository {
         return personList;
     }
 
+    public void add(Person person) {
+        personList.add(person);
+    }
 }

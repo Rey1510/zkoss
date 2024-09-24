@@ -159,9 +159,6 @@
             </div>
         </west>
 
-
-
-
         <center border="none">
             <window title="Welcome! New User" border="normal" width="500px"
                     style="margin-left: 30vh; margin-right: 30vh; margin-top:10vh;" hflex="min" vflex="min" class="form-window">

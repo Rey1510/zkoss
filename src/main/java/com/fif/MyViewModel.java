@@ -49,8 +49,4 @@ public class MyViewModel {
 //		return message;
 //	}
 
-	private String username;
-	private String gender;
-	private Date birthday;
-
 }

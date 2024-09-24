@@ -1,4 +1,5 @@
-com\fif\Controller\SearchController.class
+com\fif\Controller\SearchViewModel.class
 com\fif\Entity\Person.class
+com\fif\Repository\PersonRepository.class
 com\fif\services\PersonService.class
 com\fif\services\PersonServiceImpl.class

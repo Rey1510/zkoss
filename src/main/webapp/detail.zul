@@ -1,4 +1,4 @@
-<zk xmlns:Username="http://www.w3.org/1999/xhtml">
+<zk>
     <borderlayout width="100%" height="100%">
 
         <north size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
@@ -27,10 +27,14 @@
 
         <!-- Main Content: Listbox -->
         <center>
-            <window id="detailWindow" title="User Details" border="normal" width="100%" apply="com.fif.Controller.SearchController">
-                <textbox id="keywordBox"/>
-                <button id="searchButton" label="Search"/>
-                <listbox id="personList" width="100%" height="300px">
+            <window id="detailWindow" title="User Details" border="normal" width="100%" onOK="@command('search')" viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')" style="margin: auto">
+                Keyword:
+                <textbox value="@save(vm.keyword)" style="margin: 20px"/>
+                <div style="margin: 15px">
+                    <button label="Search" iconSclass="z-icon-search" onClick="@command('search')"/>
+                    <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')"/>
+                </div>
+                <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@save(vm.selectedPerson)">
                     <listhead sizable="true">
                         <listheader label="id" sort="auto" width="5%" />
                         <listheader label="Username" sort="auto" width="20%" />
@@ -43,31 +47,25 @@
 
                     <template name="model">
                         <listitem>
-                            <listcell label="${each.id}" />
-                            <listcell label="${each.username}" />
-                            <listcell label="${each.email}" />
-                            <listcell label="${each.gender}" />
-                            <listcell label="${each.birthday}" />
-                            <listcell label="${each.age}" />
-                            <listcell label="${each.jabodetabek}" />
+                            <listcell label="@load(each.id)" />
+                            <listcell label="@load(each.username)" />
+                            <listcell label="@load(each.email)" />
+                            <listcell label="@load(each.gender)" />
+                            <listcell label="@load(each.birthday)" />
+                            <listcell label="@load(each.age)" />
+                            <listcell label="@load(each.jabodetabek)" />
                         </listitem>
                     </template>
                 </listbox>
 
-                <div>
+                <vlayout>
                     <label id="birthdayLabel"/>
-                </div>
-                <div>
                     <label id="ageLabel"/>
-                </div>
-                <div>
                     <label id="addressLabel"/>
-                </div>
-
+                </vlayout>
             </window>
         </center>
 
-        <!-- Footer Section with Light Background and Centered Text -->
         <south size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
             <label value="Footer Gatau isi Apa" style="font-size: 16px; font-weight: bold; color: #00796B;" />
         </south>
