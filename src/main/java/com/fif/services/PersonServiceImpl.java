@@ -3,13 +3,16 @@ package com.fif.services;
 import com.fif.Entity.Person;
 import com.fif.Repository.PersonRepository;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class PersonServiceImpl implements PersonService {
 
     private PersonRepository personRepository;
+    private PersonRepository personList = new PersonRepository();
 
     public PersonServiceImpl() {
         this.personRepository = new PersonRepository();
@@ -38,14 +41,14 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         List<Person> personList = personRepository.findAll();
-        personList.removeIf(person -> person.getId() == id);
+        personList.removeIf(person -> Objects.equals(person.getId(), id));
     }
 
     @Override
-    public void add(int id, String username, String email, String password, String gender, Date birthday, int age, String jabodetabek){
-        personRepository.add(new Person(id, username, email, password, gender, birthday,age, jabodetabek));
+    public void add(String username, String email, String password, String gender, Date birthday, int age, String jabodetabek){
+        personRepository.add(new Person(UUID.randomUUID().toString(), username, email, password, gender, birthday,age, jabodetabek));
     }
 
 }

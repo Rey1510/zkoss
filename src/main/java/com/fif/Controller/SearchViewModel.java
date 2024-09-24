@@ -11,7 +11,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +23,63 @@ public class SearchViewModel{
     private String password;
     private String gender;
     private java.util.Date birthday;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public java.util.Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(java.util.Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getJabodetabek() {
+        return jabodetabek;
+    }
+
+    public void setJabodetabek(String jabodetabek) {
+        this.jabodetabek = jabodetabek;
+    }
+
     private int age;
     private String jabodetabek;
 
@@ -67,7 +124,14 @@ public class SearchViewModel{
     @Command
     @NotifyChange("personList")
     public void addUser() {
-        personService.add(this.id,this.username,this.email,this.password,this.gender, (Date) this.birthday,this.age,this.jabodetabek);
+        personService.add(this.username,this.email,this.password,this.gender, this.birthday,this.age,this.jabodetabek);
+        System.out.println(username);
+        System.out.println(email);
+        System.out.println(gender);
+        System.out.println(birthday);
+        System.out.println(age);
+        System.out.println(jabodetabek);
+        search();
     }
 
 

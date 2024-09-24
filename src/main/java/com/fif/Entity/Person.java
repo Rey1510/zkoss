@@ -3,7 +3,7 @@ package com.fif.Entity;
 import java.util.Date;
 
 public class Person {
-    private int id;
+    private String id;
     private String username;
     private String email;
     private String password;
@@ -12,7 +12,7 @@ public class Person {
     private int age;
     private String jabodetabek;
 
-    public Person(int id, String username, String email, String password, String gender, Date birthday, int age, String jabodetabek) {
+    public Person(String id, String username, String email, String password, String gender, Date birthday, int age, String jabodetabek) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -23,11 +23,11 @@ public class Person {
         this.jabodetabek = jabodetabek;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

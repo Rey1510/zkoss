@@ -161,7 +161,7 @@
 
         <center border="none">
             <window title="Welcome! New User" border="normal" width="500px"
-                    style="margin-left: 30vh; margin-right: 30vh; margin-top:10vh;" hflex="min" vflex="min" class="form-window">
+                    style="margin-left: 30vh; margin-right: 30vh; margin-top:10vh;" hflex="min" vflex="min" class="form-window" viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')">
                 <grid hflex="min" vflex="min">
                     <auxhead>
                         <auxheader label="Registration Form" colspan="2" />
@@ -173,25 +173,25 @@
                     <rows>
                         <row>
                             <label value="Username:" class="label" />
-                            <textbox id="username" constraint="no empty" onChange="checkFields()" />
+                            <textbox id="username" value="@save(vm.username)" constraint="no empty" />
                         </row>
                         <row>
                             <label value="Email:" class="label" />
-                            <textbox id="email" constraint="no empty" onChange="checkFields()" />
+                            <textbox id="email" constraint="no empty" value="@save(vm.email)" />
                         </row>
                         <row>
                             <label value="Password:" class="label" />
-                            <textbox id="password" type="password" constraint="no empty" onChange="checkFields()" />
+                            <textbox id="password" type="password" constraint="no empty" />
 
                         </row>
                         <row>
                             <label value="Re-enter Password:" class="label" />
-                            <textbox id="reenterPassword" type="password" constraint="no empty" onChange="checkFields()" />
+                            <textbox id="reenterPassword" type="password" constraint="no empty" />
 
                         </row>
                         <row>
                             <label value="Gender:" class="label" />
-                            <radiogroup id="gender">
+                            <radiogroup id="gender" selectedItem="@bind(vm.gender)">
                                 <radio id="male" label="Male" value="Male" selected="true" iconSclass="z-icon-male male-icon" />
                                 <radio id="female" label="Female" value="Female" iconSclass="z-icon-female female-icon" />
                             </radiogroup>
@@ -199,25 +199,25 @@
                         <row>
                             <label value="Birthday" class="label" />
                             <datebox id="birthday" lenient="false" buttonVisible="true"
-                                     constraint="no empty, no today, no future" onChange="checkFields()" />
+                                     constraint="no empty, no today, no future" value="@bind(vm.birthday)" />
                         </row>
                         <row>
                             <label value="Age:" class="label" />
-                            <spinner id="age" width="100px" value="18" constraint="no empty,min 0" />
+                            <spinner id="age" width="100px" value="@save(vm.age)" constraint="no empty,min 0"/>
                         </row>
                         <row>
                             <label value="Jabodetabek?" class="label" />
-                            <combobox constraint="no empty" id="combobox">
-                                <comboitem label="Jakarta" />
-                                <comboitem label="Bogor" />
-                                <comboitem label="Depok" />
-                                <comboitem label="Tangerang" />
-                                <comboitem label="Bekasi" />
+                            <combobox constraint="no empty" id="combobox" selectedItem="@save(vm.jabodetabek)">
+                                <comboitem label="Jakarta" value="Jakarta" />
+                                <comboitem label="Bogor" value="Bogor" />
+                                <comboitem label="Depok" value="Depok" />
+                                <comboitem label="Tangerang" value="Tangerang"/>
+                                <comboitem label="Bekasi" value="Bekasi" />
                             </combobox>
                         </row>
                         <row align="center" spans="2">
                             <hlayout>
-                                <checkbox id="terms" onCheck="changeSubmitStatus()" disabled="true" />
+                                <checkbox id="terms" onCheck="changeSubmitStatus()" disabled="false" />
                                 <label value="Accept Term of Use (Click for Detail)" popup="termDetail, position=end_after" class="terms-label" />
                             </hlayout>
                         </row>
@@ -225,7 +225,7 @@
                             <hlayout>
                                 <label value="Help (Ctrl+H)" style="cursor: pointer" onClick='Executions.sendRedirect("/help.zul")'/>
                                 <button label="Reset" onClick="resetForm()" class="reset-btn" />
-                                <button id="submitButton" label="Submit" href="/detail.zul" disabled="true" class="submit-btn" />
+                                <button id="submitButton" label="Submit" disabled="false" class="submit-btn" onClick="@command('addUser')" />
                             </hlayout>
                         </row>
                     </rows>

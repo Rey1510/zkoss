@@ -36,9 +36,9 @@
                 </div>
                 <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@save(vm.selectedPerson)">
                     <listhead sizable="true">
-                        <listheader label="id" sort="auto" width="5%" />
+                        <listheader label="id" sort="auto" width="15%" />
                         <listheader label="Username" sort="auto" width="20%" />
-                        <listheader label="Email" sort="auto" width="25%" />
+                        <listheader label="Email" sort="auto" width="15%" />
                         <listheader label="Gender" sort="auto" width="15%" />
                         <listheader label="Birthday" sort="auto" width="15%" />
                         <listheader label="Age" sort="auto" width="10%" />
