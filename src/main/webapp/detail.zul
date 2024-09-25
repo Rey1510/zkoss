@@ -62,8 +62,8 @@
                 </listbox>
 
                 <!-- Scrollable Edit Person Details Form -->
-                <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; max-height: 400px; overflow-y: auto;" > <!-- Ensure this area is scrollable -->
-                    <groupbox title="Edit Person Details" width="100%">
+                <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; height: 200px; overflow-y: auto;"> <!-- Set height for the scrollable area -->
+                    <groupbox title="Edit Person Details" width="100%" height="auto">
                         <vlayout spacing="15px" width="100%" style="padding: 20px;">
                             <hlayout>
                                 <label value="Username:" width="100px" />
