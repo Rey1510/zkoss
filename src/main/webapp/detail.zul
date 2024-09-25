@@ -36,7 +36,7 @@
                     <button label="Update" iconSclass="z-icon-edit" onClick="@command('updateUser')" />
                 </hlayout>
 
-                <!-- Listbox to display search results, expanded for better visibility -->
+                <!-- Listbox to display search results -->
                 <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@bind(vm.selectedPerson)" mold="paging" pageSize="10">
                     <listhead sizable="true">
                         <listheader label="ID" sort="auto" width="15%" />
@@ -61,8 +61,8 @@
                     </template>
                 </listbox>
 
-                <!-- Scrollable form container with a fixed height to reduce scrolling -->
-                <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; overflow: auto; max-height: 400px;">
+                <!-- Scrollable Edit Person Details Form -->
+                <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; max-height: 400px; overflow-y: auto;" > <!-- Ensure this area is scrollable -->
                     <groupbox title="Edit Person Details" width="100%">
                         <vlayout spacing="15px" width="100%" style="padding: 20px;">
                             <hlayout>
@@ -72,10 +72,6 @@
                             <hlayout>
                                 <label value="Email:" width="100px" />
                                 <textbox value="@bind(vm.selectedPerson.email)" width="300px" placeholder="Email" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Password:" width="100px" />
-                                <textbox value="@bind(vm.selectedPerson.password)" type="password" width="300px" placeholder="Password" />
                             </hlayout>
                             <hlayout>
                                 <label value="Gender:" width="100px" />
@@ -105,9 +101,9 @@
                         </vlayout>
                     </groupbox>
                 </div>
+
             </window>
         </center>
-
 
         <south size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
             <label value="Footer Gatau isi Apa" style="font-size: 16px; font-weight: bold; color: #00796B;" />
