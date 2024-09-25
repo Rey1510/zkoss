@@ -1,52 +1,57 @@
 package com.fif;
 
+import com.fif.Entity.Log;
+import com.fif.services.MyService;
+import java.util.List;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.lang.Strings;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zul.ListModel;
+import org.zkoss.zul.ListModelList;
 
-import java.util.Date;
-
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class MyViewModel {
 
-//	private int count;
-//	private String tes;
-//	private String message;
-//
-//	@Init
-//	public void init() {
-//		count = 100;
-//		tes = "I Love Jesus";
-//		message = "Hello World!";
-//	}
-//
-//	@Command
-//	@NotifyChange("count")
-//	public void cmd() {
-//		++count;
-//	}
-//
-//	@Command
-//	@NotifyChange("tes")
-//	public void chg() {
-//		tes = "I Love Mom";
-//	}
-//
-//	@Command
-//	@NotifyChange("message")
-//	public void chng() {
-//		message = "Halo Dunia";
-//	}
-//
-//	public int getCount() {
-//		return count;
-//	}
-//
-//	public String getTes(){
-//		return tes;
-//	}
-//
-//	public String getMessage(){
-//		return message;
-//	}
+    @WireVariable
+    private MyService myService;
+    private ListModelList<Log> logListModel;
+    private String message;
+
+    @Init
+    public void init() {
+        List<Log> logList = myService.getLogs();
+        logListModel = new ListModelList<Log>(logList);
+    }
+
+    public ListModel<Log> getLogListModel() {
+        return logListModel;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Command
+    public void addLog() {
+        if(Strings.isBlank(message)) {
+            return;
+        }
+        Log log = new Log(message);
+        log = myService.addLog(log);
+        logListModel.add(log);
+    }
+
+    @Command
+    public void deleteLog(@BindingParam("log") Log log) {
+        myService.deleteLog(log);
+        logListModel.remove(log);
+    }
 
 }
