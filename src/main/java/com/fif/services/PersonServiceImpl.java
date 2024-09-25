@@ -51,6 +51,23 @@ public class PersonServiceImpl implements PersonService {
         personRepository.add(new Person(UUID.randomUUID().toString(), username, email, password, gender, birthday,age, jabodetabek));
     }
 
+
+    @Override
+    public void update(String id, String username, String email, String gender, Date birthday, int age, String jabodetabek) {
+        List<Person> personList = personRepository.findAll();
+        for (Person p : personList) {
+            if (p.getId().equals(id)) {
+                p.setUsername(username);
+                p.setEmail(email);
+                p.setGender(gender);
+                p.setBirthday(birthday);
+                p.setAge(age);
+                p.setJabodetabek(jabodetabek);
+                break;
+            }
+        }
+    }
+
 }
 
 

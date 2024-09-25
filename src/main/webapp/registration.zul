@@ -98,8 +98,6 @@
             age.setValue(0);
             combobox.setValue(null);
             terms.setChecked(false);
-            terms.setDisabled(true);
-            submitButton.setDisabled(true);
             submitButton.setIconSclass("");
         }
 

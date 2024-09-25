@@ -134,6 +134,31 @@ public class SearchViewModel{
         search();
     }
 
+    @Command
+    @NotifyChange("personList")
+    public void updateUser() {
+        if (selectedPerson == null) throw new RuntimeException("Please select a person before updating");
+
+        // Use selectedPerson's fields for update instead of this.username, etc.
+        personService.update(
+                selectedPerson.getId(),
+                selectedPerson.getUsername(),
+                selectedPerson.getEmail(),
+                selectedPerson.getGender(),
+                selectedPerson.getBirthday(),
+                selectedPerson.getAge(),
+                selectedPerson.getJabodetabek()
+        );
+
+        // Refresh the list after updating
+        personList.clear();
+        personList.addAll(personService.findAll());
+
+        System.out.println("Updated Person: " + selectedPerson.getUsername());
+        selectedPerson = null;
+    }
+
+
 
     public void setKeyword(String keyword){
         this.keyword = keyword;
