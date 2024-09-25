@@ -7,45 +7,64 @@ import java.util.List;
 import java.util.UUID;
 
 import com.fif.Entity.Person;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+@Repository
 public class PersonRepository {
 
-    public static List<Person> personList = new ArrayList<Person>();
+    @PersistenceContext
+    private EntityManager em;
 
-    private static int id = 1;
-
-    static {
-        personList.add(new Person(UUID.randomUUID().toString(), "john_doe", "john@example.com", "password123", "Male",
-                java.sql.Date.valueOf(LocalDate.of(1990, 1, 1)), 34, "Jakarta"));
-        personList.add(new Person(UUID.randomUUID().toString(), "jane_smith", "jane@example.com", "password456", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1992, 2, 2)), 32, "Bogor"));
-        personList.add(new Person(UUID.randomUUID().toString(), "mike_johnson", "mike@example.com", "password789", "Male",
-                java.sql.Date.valueOf(LocalDate.of(1988, 3, 3)), 36, "Depok"));
-        personList.add(new Person(UUID.randomUUID().toString(), "sara_connor", "sara@example.com", "password000", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1995, 4, 4)), 29, "Tangerang"));
-        personList.add(new Person(UUID.randomUUID().toString(), "alex_brown", "alex@example.com", "password111", "Non-binary",
-                java.sql.Date.valueOf(LocalDate.of(1993, 5, 5)), 31, "Bekasi"));
-        personList.add(new Person(UUID.randomUUID().toString(), "lisa_wilson", "lisa@example.com", "password222", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1985, 6, 6)), 39, "Jakarta"));
-        personList.add(new Person(UUID.randomUUID().toString(), "kevin_white", "kevin@example.com", "password333", "Male",
-                java.sql.Date.valueOf(LocalDate.of(1991, 7, 7)), 33, "Bogor"));
-        personList.add(new Person(UUID.randomUUID().toString(), "nina_green", "nina@example.com", "password444", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1987, 8, 8)), 37, "Depok"));
-        personList.add(new Person(UUID.randomUUID().toString(), "chris_black", "chris@example.com", "password555", "Male",
-                java.sql.Date.valueOf(LocalDate.of(1994, 9, 9)), 30, "Tangerang"));
-        personList.add(new Person(UUID.randomUUID().toString(), "diana_red", "diana@example.com", "password666", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1996, 10, 10)), 28, "Bekasi"));
-        personList.add(new Person(UUID.randomUUID().toString(), "tom_hanks", "tom@example.com", "password777", "Male",
-                java.sql.Date.valueOf(LocalDate.of(1980, 11, 11)), 43, "Jakarta"));
-        personList.add(new Person(UUID.randomUUID().toString(), "cathy_james", "cathy@example.com", "password888", "Female",
-                java.sql.Date.valueOf(LocalDate.of(1993, 12, 12)), 30, "Bogor"));
+    @Transactional(readOnly = true)
+    public List<Person> queryAll() {
+        Query query = em.createQuery("SELECT p FROM Person p");
+        List<Person> result = query.getResultList();
+        return result;
     }
 
-    public List<Person> findAll(){
-        return personList;
+    @Transactional(readOnly = true)
+    public Person get(Long id){
+        return em.find(Person.class, id);
     }
 
-    public void add(Person person) {
-        personList.add(person);
+    @Transactional
+    public Person save(Person person) {
+        em.persist(person);
+        em.flush();
+        return person;
+    }
+
+    @Transactional
+    public void delete(Person person) {
+        Person p = get(person.getId());
+        if(p != null) {
+            em.remove(p);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Person> searchByKeyword(String keyword) {
+        String searchQuery = "SELECT p FROM Person p WHERE p.username LIKE :keyword";
+        Query query = em.createQuery(searchQuery);
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Person> res = query.getResultList();
+        return res;
+    }
+
+    @Transactional
+    public void updatePerson(Person person, String username, String email, String gender, Date birthday, int age, String jabodetabek) {
+        Person existingPer = get(person.getId());
+        existingPer.setUsername(username);
+        existingPer.setEmail(email);
+        existingPer.setGender(gender);
+        existingPer.setBirthday(birthday);
+        existingPer.setAge(age);
+        existingPer.setJabodetabek(jabodetabek);
+        em.merge(existingPer);
     }
 }

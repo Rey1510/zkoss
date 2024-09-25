@@ -1,19 +1,43 @@
 package com.fif.Entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class Person {
-    private String id;
+@Entity(name = "Person")
+public class Person implements Serializable, Cloneable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
     private String username;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private String gender;
+
+    @Column
     private Date birthday;
+
+    @Column
     private int age;
+
+    @Column
     private String jabodetabek;
 
-    public Person(String id, String username, String email, String password, String gender, Date birthday, int age, String jabodetabek) {
-        this.id = id;
+    public Person(){
+
+    }
+
+    public Person(String username, String email, String password, String gender, Date birthday, int age, String jabodetabek) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -23,11 +47,11 @@ public class Person {
         this.jabodetabek = jabodetabek;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
