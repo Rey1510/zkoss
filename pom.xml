@@ -2,7 +2,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fif</groupId>
-	<artifactId>zk-day3</artifactId>
+	<artifactId>zk-day1</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<zk.version>9.6.0-Eval</zk.version>
@@ -13,8 +13,8 @@
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
 	</properties>
 	<packaging>war</packaging>
-	<name>The zk-day3 Project</name>
-	<description>The zk-day3 Project</description>
+	<name>The zk-day1 Project</name>
+	<description>The zk-day1 Project</description>
 	<licenses>
 		<license>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE, Version 3</name>
@@ -157,7 +157,7 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>zk-day3${packname}</finalName>
+							<finalName>zk-day1${packname}</finalName>
 							<appendAssemblyId>false</appendAssemblyId>
 							<descriptors>
 								<descriptor>src/main/assembly/webapp.xml</descriptor>

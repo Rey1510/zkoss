@@ -1,5 +1,9 @@
+com\fif\Entity\Log.class
 com\fif\Controller\SearchViewModel.class
-com\fif\Entity\Person.class
 com\fif\Repository\PersonRepository.class
+com\fif\services\impl\LogDao.class
+com\fif\Entity\Person.class
+com\fif\services\impl\PersonServiceImpl.class
+com\fif\services\MyService.class
 com\fif\services\PersonService.class
-com\fif\services\PersonServiceImpl.class
+com\fif\services\impl\MyServiceImpl.class
