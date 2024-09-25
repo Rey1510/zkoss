@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class PersonServiceImpl implements PersonService {
 
     private PersonRepository personRepository;
-    private PersonRepository personList = new PersonRepository();
+    private List<Person> personList;
 
     public PersonServiceImpl() {
         this.personRepository = new PersonRepository();
@@ -25,19 +26,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> search(String keyword) {
-        List<Person> result = new ArrayList<>();
-        List<Person> personList = personRepository.findAll();
-
-        if (keyword == null || keyword.isEmpty()){
-            result = personList;
-        }else{
-            for (Person p: personList){
-                if(p.getUsername().toLowerCase().contains(keyword.toLowerCase())){
-                    result.add(p);
-                }
-            }
-        }
-        return result;
+        return personList.parallelStream()
+                .filter(person -> keyword == null || keyword.isEmpty()
+                || person.getUsername().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @Override

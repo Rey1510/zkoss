@@ -1,116 +1,86 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+
 <zk>
-    <borderlayout width="100%" height="100%">
-        <north size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
-            <label value="User Details Table" style="font-size: 20px; font-weight: bold; color: #00796B;" />
-        </north>
+    <window self="@define(content)" id="detailWindow" title="User Details" border="normal" width="90%" style="margin: auto; padding: 20px;" onOK="@command('search')"
+            viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')">
 
-        <west size="150px" flex="true" maxsize="200" splittable="true" collapsible="true" style="background-color: #E0E0E0; padding: 10px;">
-            <vlayout spacing="10px">
-                <menubar>
-                    <menu label="Navigate" style="border: none">
-                        <menupopup>
-                            <menuitem label="Form" onClick='Executions.sendRedirect("/registration.zul")' />
-                            <menuitem label="Table" onClick='Executions.sendRedirect("/detail.zul")' />
-                            <menuitem label="Terms and Policy" onClick='Executions.sendRedirect("/termofuse.zul")' />
-                            <menuitem label="Help" onClick='Executions.sendRedirect("/help.zul")' />
-                        </menupopup>
-                    </menu>
-                </menubar>
+        <!-- Keyword search and actions -->
+        <hlayout style="margin: 20px; justify-content: flex-end;">
+            <label value="Keyword:" style="margin-right: 10px;" />
+            <textbox value="@bind(vm.keyword)" width="200px" />
+            <button label="Search" iconSclass="z-icon-search" onClick="@command('search')" />
+            <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')" />
+            <button label="Update" iconSclass="z-icon-edit" onClick="@command('updateUser')" />
+        </hlayout>
 
-                <div style="height: 580px;"></div>
+        <!-- Listbox to display search results, expanded for better visibility -->
+        <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@bind(vm.selectedPerson)" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="ID" sort="auto" width="15%" />
+                <listheader label="Username" sort="auto" width="20%" />
+                <listheader label="Email" sort="auto" width="20%" />
+                <listheader label="Gender" sort="auto" width="10%" />
+                <listheader label="Birthday" sort="auto" width="10%" />
+                <listheader label="Age" sort="auto" width="5%" />
+                <listheader label="Jabodetabek" sort="auto" width="10%" />
+            </listhead>
 
-                <button label="Back" onClick='Executions.sendRedirect("/registration.zul")' style="background-color: #00796B; color: white;" />
-            </vlayout>
-        </west>
+            <template name="model">
+                <listitem>
+                    <listcell label="@load(each.id)" />
+                    <listcell label="@load(each.username)" />
+                    <listcell label="@load(each.email)" />
+                    <listcell label="@load(each.gender)" />
+                    <listcell label="@load(each.birthday)" />
+                    <listcell label="@load(each.age)" />
+                    <listcell label="@load(each.jabodetabek)" />
+                </listitem>
+            </template>
+        </listbox>
 
-        <center flex="true">
-            <window id="detailWindow" title="User Details" border="normal" width="90%" style="margin: auto; padding: 20px;" onOK="@command('search')"
-                    viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')">
-
-                <!-- Keyword search and actions -->
-                <hlayout style="margin: 20px; justify-content: flex-end;">
-                    <label value="Keyword:" style="margin-right: 10px;" />
-                    <textbox value="@bind(vm.keyword)" width="200px" />
-                    <button label="Search" iconSclass="z-icon-search" onClick="@command('search')" />
-                    <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')" />
-                    <button label="Update" iconSclass="z-icon-edit" onClick="@command('updateUser')" />
-                </hlayout>
-
-                <!-- Listbox to display search results, expanded for better visibility -->
-                <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@bind(vm.selectedPerson)" mold="paging" pageSize="10">
-                    <listhead sizable="true">
-                        <listheader label="ID" sort="auto" width="15%" />
-                        <listheader label="Username" sort="auto" width="20%" />
-                        <listheader label="Email" sort="auto" width="20%" />
-                        <listheader label="Gender" sort="auto" width="10%" />
-                        <listheader label="Birthday" sort="auto" width="10%" />
-                        <listheader label="Age" sort="auto" width="5%" />
-                        <listheader label="Jabodetabek" sort="auto" width="10%" />
-                    </listhead>
-
-                    <template name="model">
-                        <listitem>
-                            <listcell label="@load(each.id)" />
-                            <listcell label="@load(each.username)" />
-                            <listcell label="@load(each.email)" />
-                            <listcell label="@load(each.gender)" />
-                            <listcell label="@load(each.birthday)" />
-                            <listcell label="@load(each.age)" />
-                            <listcell label="@load(each.jabodetabek)" />
-                        </listitem>
-                    </template>
-                </listbox>
-
-                <!-- Scrollable form container with a fixed height to reduce scrolling -->
-                <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; overflow: auto; max-height: 400px;">
-                    <groupbox title="Edit Person Details" width="100%">
-                        <vlayout spacing="15px" width="100%" style="padding: 20px;">
-                            <hlayout>
-                                <label value="Username:" width="100px" />
-                                <textbox value="@bind(vm.selectedPerson.username)" width="300px" placeholder="Username" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Email:" width="100px" />
-                                <textbox value="@bind(vm.selectedPerson.email)" width="300px" placeholder="Email" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Password:" width="100px" />
-                                <textbox value="@bind(vm.selectedPerson.password)" type="password" width="300px" placeholder="Password" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Gender:" width="100px" />
-                                <radiogroup selectedItem="@bind(vm.selectedPerson.gender)">
-                                    <radio label="Male" value="Male" />
-                                    <radio label="Female" value="Female" />
-                                </radiogroup>
-                            </hlayout>
-                            <hlayout>
-                                <label value="Birthday:" width="100px" />
-                                <datebox value="@bind(vm.selectedPerson.birthday)" width="300px" placeholder="Birthday" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Age:" width="100px" />
-                                <intbox value="@bind(vm.selectedPerson.age)" width="100px" placeholder="Age" />
-                            </hlayout>
-                            <hlayout>
-                                <label value="Jabodetabek:" width="100px" />
-                                <combobox constraint="no empty" id="combobox" selectedItem="@bind(vm.selectedPerson.jabodetabek)">
-                                    <comboitem label="Jakarta" value="Jakarta" />
-                                    <comboitem label="Bogor" value="Bogor" />
-                                    <comboitem label="Depok" value="Depok" />
-                                    <comboitem label="Tangerang" value="Tangerang"/>
-                                    <comboitem label="Bekasi" value="Bekasi" />
-                                </combobox>
-                            </hlayout>
-                        </vlayout>
-                    </groupbox>
-                </div>
-            </window>
-        </center>
-
-
-        <south size="50px" style="background-color: #E0F7FA; padding: 10px; text-align: center;">
-            <label value="Footer Gatau isi Apa" style="font-size: 16px; font-weight: bold; color: #00796B;" />
-        </south>
-    </borderlayout>
+        <!-- Scrollable form container with a fixed height to reduce scrolling -->
+        <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; overflow: auto; max-height: 400px;">
+            <groupbox title="Edit Person Details" width="100%">
+                <vlayout spacing="15px" width="100%" style="padding: 20px;">
+                    <hlayout>
+                        <label value="Username:" width="100px" />
+                        <textbox value="@bind(vm.selectedPerson.username)" width="300px" placeholder="Username" />
+                    </hlayout>
+                    <hlayout>
+                        <label value="Email:" width="100px" />
+                        <textbox value="@bind(vm.selectedPerson.email)" width="300px" placeholder="Email" />
+                    </hlayout>
+                    <hlayout>
+                        <label value="Password:" width="100px" />
+                        <textbox value="@bind(vm.selectedPerson.password)" type="password" width="300px" placeholder="Password" />
+                    </hlayout>
+                    <hlayout>
+                        <label value="Gender:" width="100px" />
+                        <radiogroup selectedItem="@bind(vm.selectedPerson.gender)">
+                            <radio label="Male" value="Male" />
+                            <radio label="Female" value="Female" />
+                        </radiogroup>
+                    </hlayout>
+                    <hlayout>
+                        <label value="Birthday:" width="100px" />
+                        <datebox value="@bind(vm.selectedPerson.birthday)" width="300px" placeholder="Birthday" />
+                    </hlayout>
+                    <hlayout>
+                        <label value="Age:" width="100px" />
+                        <intbox value="@bind(vm.selectedPerson.age)" width="100px" placeholder="Age" />
+                    </hlayout>
+                    <hlayout>
+                        <label value="Jabodetabek:" width="100px" />
+                        <combobox constraint="no empty" id="combobox" selectedItem="@bind(vm.selectedPerson.jabodetabek)">
+                            <comboitem label="Jakarta" value="Jakarta" />
+                            <comboitem label="Bogor" value="Bogor" />
+                            <comboitem label="Depok" value="Depok" />
+                            <comboitem label="Tangerang" value="Tangerang"/>
+                            <comboitem label="Bekasi" value="Bekasi" />
+                        </combobox>
+                    </hlayout>
+                </vlayout>
+            </groupbox>
+        </div>
+    </window>
 </zk>
