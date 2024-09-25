@@ -4,7 +4,6 @@
     <window self="@define(content)" id="detailWindow" title="User Details" border="normal" width="90%" style="margin: auto; padding: 20px;" onOK="@command('search')"
             viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')">
 
-        <!-- Keyword search and actions -->
         <hlayout style="margin: 20px; justify-content: flex-end;">
             <label value="Keyword:" style="margin-right: 10px;" />
             <textbox value="@bind(vm.keyword)" width="200px" />
@@ -13,7 +12,7 @@
             <button label="Update" iconSclass="z-icon-edit" onClick="@command('updateUser')" />
         </hlayout>
 
-        <!-- Listbox to display search results, expanded for better visibility -->
+        <!-- Listbox to display search results -->
         <listbox model="@init(vm.personList)" emptyMessage="No person found!" width="100%" height="300px" selectedItem="@bind(vm.selectedPerson)" mold="paging" pageSize="10">
             <listhead sizable="true">
                 <listheader label="ID" sort="auto" width="15%" />
@@ -38,9 +37,9 @@
             </template>
         </listbox>
 
-        <!-- Scrollable form container with a fixed height to reduce scrolling -->
-        <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; overflow: auto; max-height: 400px;">
-            <groupbox title="Edit Person Details" width="100%">
+        <!-- Scrollable Edit Person Details Form -->
+        <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; height: 200px; overflow-y: auto;"> <!-- Set height for the scrollable area -->
+            <groupbox title="Edit Person Details" width="100%" height="auto">
                 <vlayout spacing="15px" width="100%" style="padding: 20px;">
                     <hlayout>
                         <label value="Username:" width="100px" />
@@ -49,10 +48,6 @@
                     <hlayout>
                         <label value="Email:" width="100px" />
                         <textbox value="@bind(vm.selectedPerson.email)" width="300px" placeholder="Email" />
-                    </hlayout>
-                    <hlayout>
-                        <label value="Password:" width="100px" />
-                        <textbox value="@bind(vm.selectedPerson.password)" type="password" width="300px" placeholder="Password" />
                     </hlayout>
                     <hlayout>
                         <label value="Gender:" width="100px" />
