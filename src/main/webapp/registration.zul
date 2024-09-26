@@ -1,4 +1,4 @@
-<!--<?init class="org.zkoss.zk.ui.util.Composition" arg0="/common/layout/template.zul"?>-->
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 
 <zk xmlns:Username="http://www.w3.org/1999/xhtml">
 
@@ -133,34 +133,34 @@
 
     ]]></zscript>
 
-    <borderlayout height="100%" width="100%">
-        <west title="Welcome" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
-            <div style="background: #4A8C2A; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                <label value="Welcome to My Paradise!" style="color: white; font-size: 24px; font-weight: bold; display: block; margin-bottom: 15px;" />
-                <label value="Please fill out the form to get started." style="color: #E0E0E0; display: block; margin-bottom: 25px;" />
+<!--    <borderlayout height="100%" width="100%">-->
+<!--        <west title="Welcome" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">-->
+<!--            <div style="background: #4A8C2A; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">-->
+<!--                <label value="Welcome to My Paradise!" style="color: white; font-size: 24px; font-weight: bold; display: block; margin-bottom: 15px;" />-->
+<!--                <label value="Please fill out the form to get started." style="color: #E0E0E0; display: block; margin-bottom: 25px;" />-->
 
-                <label value="Tips for Filling Out the Form:" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />
+<!--                <label value="Tips for Filling Out the Form:" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />-->
 
-                <vlayout style="color: #E0E0E0; margin-left: 15px; margin-bottom: 20px;">
-                    <label value="• Ensure your email is valid." />
-                    <label value="• Choose a strong password." />
-                    <label value="• Provide accurate information." />
-                </vlayout>
+<!--                <vlayout style="color: #E0E0E0; margin-left: 15px; margin-bottom: 20px;">-->
+<!--                    <label value="• Ensure your email is valid." />-->
+<!--                    <label value="• Choose a strong password." />-->
+<!--                    <label value="• Provide accurate information." />-->
+<!--                </vlayout>-->
 
-                <label value="Need Help?" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />
-                <label value="Contact us at: tolongaku@hotmail.com" style="color: #E0E0E0; display: block; margin-bottom: 25px;" />
+<!--                <label value="Need Help?" style="color: white; font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px;" />-->
+<!--                <label value="Contact us at: tolongaku@hotmail.com" style="color: #E0E0E0; display: block; margin-bottom: 25px;" />-->
 
-                <label value="By registering, you agree to our " style="color: #E0E0E0;" />
-                <a href="termofuse.zul" style="color: #FFD700; text-decoration: underline;">Terms of Use</a>
-                <label value=" and " style="color: #E0E0E0;" />
-                <a href="privacy.zul" style="color: #FFD700; text-decoration: underline;">Privacy Policy</a>
-            </div>
-        </west>
+<!--                <label value="By registering, you agree to our " style="color: #E0E0E0;" />-->
+<!--                <a href="termofuse.zul" style="color: #FFD700; text-decoration: underline;">Terms of Use</a>-->
+<!--                <label value=" and " style="color: #E0E0E0;" />-->
+<!--                <a href="privacy.zul" style="color: #FFD700; text-decoration: underline;">Privacy Policy</a>-->
+<!--            </div>-->
+<!--        </west>-->
 
-        <center border="none">
+<!--        <center border="none">-->
             <window title="Welcome! New User" border="normal" width="500px"
                     style="margin-left: 30vh; margin-right: 30vh; margin-top:10vh;" hflex="min" vflex="min" class="form-window" viewModel="@id('vm') @init('com.fif.Controller.SearchViewModel')">
-                <grid hflex="min" vflex="min">
+                <grid hflex="min" vflex="min" self="@define(content)">
                     <auxhead>
                         <auxheader label="Registration Form" colspan="2" />
                     </auxhead>
@@ -237,6 +237,6 @@
                     <include src="help.zul" />
                 </popup>
             </window>
-        </center>
-    </borderlayout>
+<!--        </center>-->
+<!--    </borderlayout>-->
 </zk>
