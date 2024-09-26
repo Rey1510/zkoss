@@ -1,0 +1,7 @@
+<window title="Access Denied" border="normal" width="400px" height="200px" closable="false" maximizable="false" minimizable="false">
+    <vbox hflex="1" vflex="1" align="center" pack="center">
+        <label value="Access Denied" style="font-size:20px; color:red;" />
+        <label value="You do not have permission to view this page." />
+        <button label="Back to Home" onClick='Executions.sendRedirect("/home.zul")' />
+    </vbox>
+</window>

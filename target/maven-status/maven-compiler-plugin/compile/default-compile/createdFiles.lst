@@ -1,9 +1,16 @@
-com\fif\Entity\Log.class
 com\fif\Controller\SearchViewModel.class
 com\fif\Repository\PersonRepository.class
 com\fif\services\impl\LogDao.class
+com\fif\services\impl\UserServiceImpl.class
+com\fif\util\MyViewModel.class
+com\fif\Repository\UserRepository.class
 com\fif\Entity\Person.class
+com\fif\config\SecurityConfig.class
 com\fif\services\impl\PersonServiceImpl.class
 com\fif\services\MyService.class
+com\fif\Entity\Log.class
+com\fif\Entity\Role.class
+com\fif\util\Main.class
+com\fif\Entity\User.class
 com\fif\services\PersonService.class
 com\fif\services\impl\MyServiceImpl.class

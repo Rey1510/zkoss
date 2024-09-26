@@ -1,4 +1,4 @@
-package com.fif;
+package com.fif.util;
 
 import com.fif.Entity.Log;
 import com.fif.services.MyService;
